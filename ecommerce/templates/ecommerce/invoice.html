@@ -1,0 +1,6 @@
+{% extends 'ecommerce/base.html' %}
+{% block content %}
+<h1>Order #{{ order.pk }} confirmed</h1>
+<pre>{{ invoice }}</pre>
+<p>This demonstration does not process payment.</p>
+{% endblock %}

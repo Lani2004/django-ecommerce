@@ -1,0 +1,9 @@
+{% extends 'ecommerce/base.html' %}
+{% block content %}
+<h1>{{ heading|default:'Account form' }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Save / Continue</button>
+</form>
+{% endblock %}

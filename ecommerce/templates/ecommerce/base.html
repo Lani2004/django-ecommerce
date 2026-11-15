@@ -1,0 +1,40 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MarketPlace</title>
+        <link rel="stylesheet" href="{% static 'ecommerce/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'home' %}">
+                <strong>MarketPlace</strong>
+            </a>
+            <nav>
+                <a href="{% url 'home' %}">Products</a>
+                {% if user.is_authenticated %}
+                {% if user.profile.role == 'vendor' %}
+                <a href="{% url 'my_stores' %}">My stores</a>
+                {% elif user.profile.role == 'buyer' %}
+                <a href="{% url 'cart' %}">Cart</a>
+                {% endif %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button>Log out</button>
+                </form>{% else %}<a href="{% url 'login' %}">Log in</a>
+                <a href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            {% for message in messages %}
+            <p class="message">{{ message }}</p>
+            {% endfor %}
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+    </html>
+    

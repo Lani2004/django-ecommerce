@@ -1,0 +1,17 @@
+{% extends 'ecommerce/base.html' %}
+{% block content %}
+<h1>Browse products</h1>
+<div class="grid">
+    {% for product in products %}
+    <article>
+        <h2>
+            <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+        </h2>
+        <p>{{ product.store.name }}</p>
+        <p>AUD {{ product.price }} · Stock {{ product.stock }}</p>
+    </article>
+    {% empty %}
+    <p>No products yet. Vendors can add some!</p>
+    {% endfor %}
+</div>
+{% endblock %}

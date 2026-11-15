@@ -1,0 +1,23 @@
+{% extends 'ecommerce/base.html' %}
+{% block content %}
+<h1>Your cart</h1>
+{% for line in lines %}
+<article>
+    {{ line.product.name }} × {{ line.quantity }} — AUD {{ line.subtotal }}
+    <form method="post" action="{% url 'remove_cart' line.product.pk %}">
+        {% csrf_token %}
+        <button>Remove</button>
+    </form>
+</article>
+{% empty %}
+<p>Cart is empty.</p>
+{% endfor %}
+<h2>Total: AUD {{ total }}</h2>
+{% if lines %}
+<form method="post" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    <button>Checkout (demo: no payment)</button>
+</form>
+<a href="{% url 'home' %}">Continue Shopping</a>
+{% endif %}
+{% endblock %}
