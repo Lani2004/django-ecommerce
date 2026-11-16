@@ -17,8 +17,8 @@ Python, Django, HTML, CSS and MariaDB. SQLite is available for local automated t
 ## Download and open the project
 1. Clone your own GitHub repository (replace the example with your actual repository URL):
    ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-   cd YOUR-REPOSITORY
+   git clone https://github.com/Lani2004/django-ecommerce.git
+   cd django-ecommerce
    ```
    If you already downloaded the ZIP, open the extracted `marketplace_project` folder instead.
 2. Create and activate the virtual environment **inside** the project folder:
